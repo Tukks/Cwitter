@@ -6,17 +6,15 @@
  */
 angular.module("cwitter").controller("tweetControler",["$scope","tweetService",function($scope,tweetService){
 
-    $scope.tweet;
-    $scope.user;
 
-    $scope.tweet= function(){
-        var data = {"user":$scope.user, "tweet":$scope.tweet};
-        tweetService.tweet(data);
+    $scope.cweetText;
 
+    $scope.jeCweet = function(){
+        var cweetTxt = {"cweet":$scope.cweetText};
+        tweetService.sendTweet(vweetTxt);
 
 
     }
-
 
 
 

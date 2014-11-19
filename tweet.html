@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html ng-app="cwitter">
 <head lang="en">
-    <div ng-include="navBar.html"></div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
 
+                <a class="navbar-brand" href="tweet.html">Brand</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ><a href="follower.html">Follower </a></li>
+                    <li class="active"><a href="tweet.html">Tweet<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Your Tweet</a></li>
+
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container-fluid -->
+    </nav>
     <meta charset="UTF-8">
     <title></title>
     <script type="text/javascript" src="js/lib/angular.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/Controller/tweetControler.js"></script>
     <script type="text/javascript" src="js/Services/tweetService.js"></script>
+    <link rel="stylesheet" href="./css/tweet.css">
 
 
 
 </head>
 <body ng-controller="tweetControler">
+<div>
+
 <h1>CTwitter</h1>
+   <p>Put Your Cweet!!</p>
+<div><input type="text" ng-model="cweetText" ng-minlength="3" ng-maxlength="140" min="3" minlength="3" max="140" maxlength="140"> <div class="buttonTweet" ng-click="jeCweet()">coucou</div></div>
 
 <div>
     <ul class="list-group">
@@ -23,6 +47,7 @@
 
 </div>
 </body>
+</div>
 
 
 <link rel="stylesheet" href="./dist/css/bootstrap.min.css">

@@ -7,10 +7,11 @@
 angular.module("cwitter").factory('tweetService', ['$http', function($http){
 
     return{
-        tweet : function(data){
-            console.log(data);
-            return $http.post("http://localhost:8080/Cwitter/user/tweet",data);
 
+        sendTweet : function(cweetText){
+
+            console.log(cweetText);
+            return $http.post("http://localhost:8080/Cwitter/cweet/sendCweet");
         }
 
     }
