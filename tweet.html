@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="cwitter">
+<head lang="en">
+    <div ng-include="navBar.html"></div>
+
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/lib/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/Controller/tweetControler.js"></script>
+    <script type="text/javascript" src="js/Services/tweetService.js"></script>
+
+
+
+</head>
+<body ng-controller="tweetControler">
+<h1>CTwitter</h1>
+
+<div>
+    <ul class="list-group">
+        <li class="list-group-item">Name : Tweet</li>
+    </ul>
+
+</div>
+</body>
+
+
+<link rel="stylesheet" href="./dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/follower.css">
+
+</html>
