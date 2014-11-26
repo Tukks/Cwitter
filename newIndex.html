@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="cwitter">
+<head lang="en">
+
+
+    <meta charset="UTF-8">
+    <title>Cwitter</title>
+    <script type="text/javascript" src="js/lib/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/Controller/tweetControler.js"></script>
+    <script type="text/javascript" src="js/Services/tweetService.js"></script>
+    <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
+
+</head>
+
+<body ng-controller="tweetControler">
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-4">
+            <h1>Your followers</h1>
+        </div>
+
+        <div class="col col-lg-4">
+            <h1>Your Cweets</h1>
+        </div>
+
+        <div class="col col-lg-4">
+            <h1>Your following</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-lg-4">
+            <div>
+                <ul class="list-group">
+                    <g:each in="${followersList}" var="followerInstance">
+                        <li class="list-group-item">${followerInstance.username}</li>
+                    </g:each>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="col col-lg-4">
+                <form action="http://localhost:8080/Cwitter/cweet/sendCweet" method="post">
+                <input type="text" ng-model="cweetText" ng-minlength="3" ng-maxlength="140" min="3" minlength="3"
+                        max="140"
+                        maxlength="140" placeholder="Put Your Cweet!!" name="cweet" >
+                <input type="submit" value="envoyer" /> <!--<div class="btn btn-info" ng-click="cweeter()">Envoyer</div>-->
+                </form>
+
+            <div>
+                <ul class="list-group">
+                    <g:each in="${cweetsList}" var="cweetInstance">
+                        <li class="list-group-item">${cweetInstance.message}</li>
+                    </g:each>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col col-lg-4">
+            <div>
+                <ul class="list-group">
+                    <g:each in="${followingList}" var="followingInstance">
+                        <li class="list-group-item">${followingInstance.username}</li>
+                    </g:each>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/follower.css">
+
+</html>
