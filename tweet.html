@@ -1,56 +1,117 @@
 <!DOCTYPE html>
 <html ng-app="cwitter">
 <head lang="en">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/follower.css">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
 
-                <a class="navbar-brand" href="tweet.html">Brand</a>
+                <a class="navbar-brand" href="tweet.html">Cweeter</a>
             </div>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
 
+
+                    <input list="usersDL" type="text" class="form-control " placeholder="Search">
+                    <datalist id="usersDL">
+                        <g:each in="${cwitter.User.list()}">
+                            <option value="${it.username}" id="${it.id}" onclick="">
+                        </g:each>
+                    </datalist>
+
+
+                </div>
+
+            </form>
+            <!-- /.navbar-collapse -->
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li ><a href="follower.html">Follower </a></li>
-                    <li class="active"><a href="tweet.html">Tweet<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Your Tweet</a></li>
+                    <li class="active"><a href="cweet.html">Cweet<span class="sr-only">(current)</span></a></li>
 
                 </ul>
 
-            </div><!-- /.navbar-collapse -->
+            </div>
 
-        </div><!-- /.container-fluid -->
+
+        </div>
+        <!-- /.container-fluid -->
     </nav>
-    <meta charset="UTF-8">
-    <title></title>
-    <script type="text/javascript" src="js/lib/angular.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/Controller/tweetControler.js"></script>
-    <script type="text/javascript" src="js/Services/tweetService.js"></script>
-    <link rel="stylesheet" href="./css/tweet.css">
-
 
 
 </head>
-<body ng-controller="tweetControler">
-<div>
 
-<h1>CTwitter</h1>
-   <p>Put Your Cweet!!</p>
-<div><input type="text" ng-model="cweetText" ng-minlength="3" ng-maxlength="140" min="3" minlength="3" max="140" maxlength="140"> <div class="buttonTweet" ng-click="jeCweet()">coucou</div></div>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-3">
+            <h1>Your followers</h1>
+        </div>
 
-<div>
-    <ul class="list-group">
-        <li class="list-group-item">Name : Tweet</li>
-    </ul>
+        <div class="col col-lg-6">
+            <h1>Your Cweets</h1>
+        </div>
 
+        <div class="col col-lg-3">
+            <h1>Your following</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-lg-3">
+            <div>
+                <ul class="list-group">
+                    <g:each in="${followersList}" var="followerInstance">
+                        <li class="list-group-item">${followerInstance.username}</li>
+                    </g:each>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col col-lg-6">
+
+
+                    <div class="col-sm-12 col-md-12 col-lg-12" class="input-group input-group-lg">
+                        <form action="http://localhost:8080/Cwitter/cweet/sendCweet" method="POST">
+                            <input type="text" class="form-control" placeholder="Put Your Cweet!" min="3" minlength="3"
+                                   max="140"
+                                   maxlength="140" name="cweet"><br/>
+                            <input class="btn btn-default" type="submit" value="envoyer">
+                            <br/>
+                        </form>
+                    </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+                    <div id="cweet" class="col-sm-12 col-md-12 col-lg-12">
+                        <g:each in="${cweetsList}" var="cweetInstance">
+                            <p class="tweet"> ${cweetInstance.message}</p>
+                        </g:each>
+                    </div>
+
+
+        </div>
+
+        <div class="col col-lg-3">
+            <div>
+                <ul class="list-group">
+                    <g:each in="${followingList}" var="followingInstance">
+                        <li class="list-group-item">${followingInstance.username}</li>
+                    </g:each>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
-</div>
 
-
-<link rel="stylesheet" href="./dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/follower.css">
 
 </html>
